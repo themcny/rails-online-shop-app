@@ -1,8 +1,16 @@
-## Ye Olde Online Shoppe
+## Rails online shop
+
+Actual deployed version:
 
 
-### Overview
-This is a multi-day, agile development challenge that will require you to create an online store using Rails.   You will work in frequent, small iterations.  After each iteration, you will demo the app to the "client" and consult with a "senior engineer".  This app will have a polished user interface and be fully tested.
+
+### To do
+
+
+
+
+
+
 
 ### Requirements
 - There is no starter repo, you are responsible for creating a git repo, following proper git workflow, and pushing code to github.

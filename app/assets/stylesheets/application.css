@@ -16,10 +16,17 @@
 
 html {
   font-family: sans-serif;
+  background-color: #F3F3F3;
 }
 
 body {
-  padding:0 20px;
+  padding-top:8px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 70px;
+  width: 800px;
+  background-color: white;
+  margin: auto;
 }
 
 a {
@@ -28,18 +35,51 @@ a {
   color: blue;
 }
 
+a:hover {
+  color: black;
+}
+
 header
-    {
-      display: table;
-      width: 100%;
-    }
+{
+  display: table;
+  width: 100%;
+}
 header h1
-    {
-      display: table-cell;
-      text-align: left;
-    }
+{
+  display: table-cell;
+  text-align: left;
+}
 header span
-    {
-      display: table-cell;
-      text-align: right;
-    }
+{
+  display: table-cell;
+  text-align: right;
+}
+
+.button {
+  color:white;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding:10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.button:hover{
+  background-color: black;
+}
+
+.button-edit {
+  background-color: green;
+  float: left;
+  margin: 0;
+}
+
+.button-delete {
+  background-color: red;
+  float: left;
+  margin: 0;
+}
+
+.button-create {
+  background-color: blue;
+}

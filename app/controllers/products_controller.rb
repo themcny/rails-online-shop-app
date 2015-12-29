@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.create!(
+    @product = Product.new(
       title:    params[:title],
       body:     params[:body],
       location: params[:location],
@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
       price:    params[:price],
       quantity: params[:quantity]
       )
+    @product.save
   end
 
   # def create

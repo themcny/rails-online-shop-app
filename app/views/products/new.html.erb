@@ -10,7 +10,7 @@
 
   <p>
     <%= f.label :body %><br>
-    <%= f.text_field :body %>
+    <%= f.text_area :body, size: "30x10" %>
   </p>
 
   <p>
@@ -25,16 +25,16 @@
 
   <p>
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.number_field :price %>
   </p>
 
   <p>
     <%= f.label :quantity %><br>
-    <%= f.text_field :quantity %>
+    <%= f.number_field :quantity %>
   </p>
 
   <p>
-    <%= f.submit "Add"%>
+    <%= f.submit "Add", :class => 'button button-create'%>
   </p>
 <% end %>
 </div>
