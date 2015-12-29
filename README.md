@@ -1,17 +1,5 @@
 ## Rails online shop
 
-Actual deployed version:
-
-
-
-### To do
-
-
-
-
-
-
-
 ### Requirements
 - There is no starter repo, you are responsible for creating a git repo, following proper git workflow, and pushing code to github.
 - The role of the "client" will be played by one of your dear instructors.  You will demo your app to the client after each iteration.  The "client" will describe what they need and inform your decisions about what the next iteration of the app should be.
