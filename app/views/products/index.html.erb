@@ -1,12 +1,8 @@
-<h1>Products#index</h1>
+<h1>Products</h1><hr>
 
 <% @products.each do |product| %>
   <div class="title">
     <h3><%= link_to product.title, product_path(product) %></h3>
-  </div>
-
-  <div class="body">
-    <p>Description: <%= product.body %></p>
   </div>
 
   <div class="location">
