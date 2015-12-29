@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20151229003013) do
     t.string   "category"
     t.text     "body"
     t.text     "location"
-    t.float    "price"
+    t.integer  "price"
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
