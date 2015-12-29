@@ -6,7 +6,7 @@ RSpec.describe Product, :type => :model do
       product = Product.create!(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "Everywhere",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -45,7 +45,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "1 Object",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "Out of Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -57,7 +57,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Title",
         body: "World",
-        location: "instock",
+        location: "In Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -69,7 +69,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Title",
         body: "World"*201,
-        location: "instock",
+        location: "In Transit",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -81,7 +81,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hell",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "In Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -93,7 +93,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello"*5,
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "In Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -105,7 +105,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "In Stock",
         category: "Web",
         price: 999,
         quantity: 1
@@ -117,7 +117,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "In Stock",
         category: "Web development leitmotiv"*100,
         price: 999,
         quantity: 1
@@ -129,7 +129,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "In Stock",
         category: "Web development3",
         price: 999,
         quantity: 1
@@ -166,7 +166,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "In Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 'hey'
@@ -178,7 +178,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "instock",
+        location: "In Stock",
         category: "Web development leitmotiv",
         price: 'nope',
         quantity: 1
