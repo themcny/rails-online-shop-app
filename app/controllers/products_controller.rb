@@ -3,10 +3,21 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def create
-    @product = Product.new(whatever: params[:whatever])
+  def new
+    @product = Product.new(
+      title:    params[:title],
+      body:     params[:body],
+      location: params[:location],
+      category: params[:category],
+      price:    params[:price],
+      quantity: params[:quantity]
+      )
     @product.save
   end
+
+  # def create
+  #   @product.save
+  # end
 
   def show
     @product = Product.find(params[:id])
@@ -26,7 +37,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.update(
       title: params[:product][:title],
-      body: params[:product][:body]
+      body:  params[:product][:body]
       )
     redirect_to products_path
   end

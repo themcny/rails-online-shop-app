@@ -1,0 +1,11 @@
+<h1> Create a new product</h1>
+
+<div>
+<%= form_for(@product) do |f| %>
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>
