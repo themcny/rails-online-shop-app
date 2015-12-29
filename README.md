@@ -1,6 +1,6 @@
 ## Rails online shop
 
-
+[Last Heroku deployed version](http://rails-online-shop-paul-nicole.herokuapp.com/products)
 
 ### Requirements
 - There is no starter repo, you are responsible for creating a git repo, following proper git workflow, and pushing code to github.
