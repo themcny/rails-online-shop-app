@@ -69,6 +69,12 @@ RSpec.describe Product, :type => :model do
       product.location = "Everywhere"
       expect(product.save)
     end
+
+    it "cannot be anything else" do
+      product.location = "hello"
+      product.save
+      expect(product.errors.full_messages).to eq(["Location : \'#{product.location}\' is not included in the list, try dashes instead of spaces!"])
+    end
   end
 
   context "A new product will not be created if" do
