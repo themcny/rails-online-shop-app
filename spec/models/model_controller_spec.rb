@@ -89,7 +89,7 @@ RSpec.describe Product, :type => :model do
       expect(failure.id).to eq(nil)
     end
 
-     it "title is too short" do
+     it "title is too long" do
       failure = Product.create(
         title: "Hello"*5,
         body: "World is a great place to live in even if it's fucked up sometimes",
@@ -134,6 +134,31 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "location contains a number" do
+      failure = Product.create(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywher3e",
+        category: "Web development",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "location is not a proper type" do
+      failure = Product.create(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Ev",
+        category: "Web development",
+        price: 999,
+        quantity: 1
+        )
+      p failure
       expect(failure.id).to eq(nil)
     end
 

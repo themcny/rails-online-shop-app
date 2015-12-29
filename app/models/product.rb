@@ -11,4 +11,13 @@ class Product < ActiveRecord::Base
   validates :body, length: { in: 20..1000 }
   validates :title, length: { in: 5..15 }
   validates :category, length: { in: 5..30 }
+
+  validate :valid_location
+
+  def valid_location
+    location = :location.downcase
+    unless location.downcase == 'in stock' || location.downcase == 'out of stock' || location.downcase == 'in transit'
+      errors.add(:location, "not a proper location")
+    end
+  end
 end
