@@ -40,6 +40,37 @@ RSpec.describe Product, :type => :model do
     # end
 
   end
+
+  context "A product's location" do
+    product = Product.new(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        category: "Web development leitmotiv",
+        price: 999,
+        quantity: 1
+        )
+
+    it "can be In-Stock" do
+      product.location = "In-Stock"
+      expect(product.save)
+    end
+
+    it "can be In-Transit" do
+      product.location = "In-Transit"
+      expect(product.save)
+    end
+
+    it "can be Out-of-Stock" do
+      product.location = "Out-of-Stock"
+      expect(product.save)
+    end
+
+    it "can be Everywhere" do
+      product.location = "Everywhere"
+      expect(product.save)
+    end
+  end
+
   context "A new product will not be created if" do
     it "has numbers in the title" do
       failure = Product.create(
