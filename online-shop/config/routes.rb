@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'products/edit'
+
   get 'products/index'
 
   get 'products/model'
