@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new(
+    @product = Product.create!(
       title:    params[:title],
       body:     params[:body],
       location: params[:location],
@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
       price:    params[:price],
       quantity: params[:quantity]
       )
-    @product.save
   end
 
   # def create
@@ -36,8 +35,12 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update(
-      title: params[:product][:title],
-      body:  params[:product][:body]
+      title:    params[:product][:title],
+      body:     params[:product][:body],
+      location: params[:product][:location],
+      category: params[:product][:category],
+      price:    params[:product][:price],
+      quantity: params[:product][:quantity]
       )
     redirect_to products_path
   end
