@@ -1,12 +1,11 @@
 # Custom tests
 require "rails_helper"
 
-# Controller product creation test
 RSpec.describe Product, :type => :model do
   context "A new product" do
       product = Product.create!(
         title: "Hello",
-        body: "World",
+         body: "World is a great place to live in even if it's fucked up sometimes",
         location: "Everywhere",
         category: "Web development leitmotiv",
         price: 999,
@@ -29,6 +28,14 @@ RSpec.describe Product, :type => :model do
     it "have a integer different kind of data types for price and quantity" do
       expect((product.price).is_a?(Integer)).to be(true)
     end
+
+    product.destroy
+
+    # it "can be deleted" do
+    #   p product.id
+    #   p Product.destroy(product.id)
+    #   p expect(product).to be(nil)
+    # end
 
   end
 end
