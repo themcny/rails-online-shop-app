@@ -9,9 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    p "1111111111111111111111111111111111111111111111111111111111111111111111"
-    p params.inspect
-    @product = Product.create!(
+    @product = Product.new(
       title:    params[:product][:title],
       body:     params[:product][:body],
       location: params[:product][:location],
@@ -20,11 +18,11 @@ class ProductsController < ApplicationController
       quantity: params[:product][:quantity]
       )
 
-    # if @product.save
+    if @product.save
       redirect_to products_path,  :notice => "Your product was saved"
-    # else
-    #   render "new"
-    # end
+    else
+      render "new"
+    end
   end
 
   def show
