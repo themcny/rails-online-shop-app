@@ -1,5 +1,8 @@
 <h1>Add a new product</h1>
-
+<% if @errors %>
+  <p><%= @errors %></p>
+  <%= @display %>
+<% end %>
 <div>
 <%= form_for(@product) do |f| %>
 
