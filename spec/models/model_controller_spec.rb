@@ -125,6 +125,18 @@ RSpec.describe Product, :type => :model do
       expect(failure.id).to eq(nil)
     end
 
+    it "category contains a number" do
+      failure = Product.create(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web development3",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
     it "quantity is not an integer" do
       failure = Product.create(
         title: "Hello",
