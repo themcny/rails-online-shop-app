@@ -9,15 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(
-      title:    params[:product][:title],
-      body:     params[:product][:body],
-      location: params[:product][:location],
-      category: params[:product][:category],
-      price:    params[:product][:price],
-      quantity: params[:product][:quantity]
-      )
-
+    @product = Product.new(product_params)
     if @product.save
       redirect_to products_path,  :notice => "Your product was saved"
     else
@@ -41,15 +33,14 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(
-      title:    params[:product][:title],
-      body:     params[:product][:body],
-      location: params[:product][:location],
-      category: params[:product][:category],
-      price:    params[:product][:price],
-      quantity: params[:product][:quantity]
-      )
+    @product.update(product_params)
     redirect_to products_path
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:title, :body, :location, :category, :price, :quantity)
   end
 
 end
