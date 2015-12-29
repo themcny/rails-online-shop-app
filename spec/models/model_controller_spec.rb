@@ -57,7 +57,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Title",
         body: "World",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -81,7 +81,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hell",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -93,7 +93,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello"*5,
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
@@ -105,7 +105,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web",
         price: 999,
         quantity: 1
@@ -117,7 +117,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web development leitmotiv"*100,
         price: 999,
         quantity: 1
@@ -129,20 +129,8 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web development3",
-        price: 999,
-        quantity: 1
-        )
-      expect(failure.id).to eq(nil)
-    end
-
-    it "location contains a number" do
-      failure = Product.create(
-        title: "Hello",
-        body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "Everywher3e",
-        category: "Web development",
         price: 999,
         quantity: 1
         )
@@ -158,7 +146,6 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
-      p failure
       expect(failure.id).to eq(nil)
     end
 
@@ -166,7 +153,7 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 'hey'
@@ -178,12 +165,16 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "In Stock",
+        location: "In-Stock",
         category: "Web development leitmotiv",
         price: 'nope',
         quantity: 1
         )
+      p failure.errors
+      p failure.errors.full_messages
       expect(failure.id).to eq(nil)
     end
   end
 end
+
+
