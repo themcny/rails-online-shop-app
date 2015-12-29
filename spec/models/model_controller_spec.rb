@@ -64,5 +64,89 @@ RSpec.describe Product, :type => :model do
         )
       expect(failure.id).to eq(nil)
     end
+
+    it "body is too long" do
+      failure = Product.create(
+        title: "Title",
+        body: "World"*201,
+        location: "Everywhere",
+        category: "Web development leitmotiv",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "title is too short" do
+      failure = Product.create(
+        title: "Hell",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web development leitmotiv",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+     it "title is too short" do
+      failure = Product.create(
+        title: "Hello"*5,
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web development leitmotiv",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "category is too short" do
+      failure = Product.create(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "category is too long" do
+      failure = Product.create(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web development leitmotiv"*100,
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "quantity is not an integer" do
+      failure = Product.create(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web development leitmotiv",
+        price: 999,
+        quantity: 'hey'
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "price is not an integer" do
+      failure = Product.create(
+        title: "Hello",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web development leitmotiv",
+        price: 'nope',
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
   end
 end
