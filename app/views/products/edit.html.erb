@@ -3,33 +3,39 @@
 <%= form_for :product, url: product_path(@product), method: :patch do |f| %>
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title, :placeholder => "#{display_error(:title)}" %>
+    <div class='errors'><%= display_error(:title) %></div>
+    <%= f.text_field :title %>
   </p>
 
   <p>
     <%= f.label :body %><br>
-    <%= f.text_area :body, size: "30x10", :placeholder => "#{display_error(:body)}" %>
+    <div class='errors'><%= display_error(:body) %></div>
+    <%= f.text_area :body, size: "30x10" %>
   </p>
 
   <p>
     <%= f.label :location %><br>
-    <%= f.text_field :location, :placeholder => "#{display_error(:location)}" %>
+    <div class='errors'><%= display_error(:location) %></div>
+    <%= f.text_field :location %>
   </p>
 
   <p>
     <%= f.label :category %><br>
-    <%= f.text_field :category, :placeholder => "#{display_error(:category)}" %>
+    <div class='errors'><%= display_error(:category) %></div>
+    <%= f.text_field :category %>
 
   </p>
 
   <p>
     <%= f.label :price %><br>
-    <%= f.number_field :price, :placeholder => "#{display_error(:price)}" %>
+    <div class='errors'><%= display_error(:price) %></div>
+    <%= f.number_field :price %>
   </p>
 
   <p>
     <%= f.label :quantity %><br>
-    <%= f.number_field :quantity, :placeholder => "#{display_error(:quantity)}" %>
+    <div class='errors'><%= display_error(:quantity) %></div>
+    <%= f.number_field :quantity %>
   </p>
 
   <p>
