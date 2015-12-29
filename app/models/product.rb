@@ -8,4 +8,5 @@ class Product < ActiveRecord::Base
                                             message: "only allows letters, spaces, and punctuation." }
   validates :price, :quantity, numericality: { only_integer: true }
   validates :body, length: { in: 20..1000 }
+  validates :title, :category, length: { in: 5..15 }
 end
