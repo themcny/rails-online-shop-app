@@ -3,7 +3,7 @@ items = ["Object One", "Object Two", "Object Three", "Object Four", "Object Five
 items.each do |item|
   Product.create!(
     title: item,
-    category: Faker::Commerce.department,
+    category: "Category here",
     body: Faker::Lorem.sentence,
     location: "In stock",
     quantity: rand(1..10),
