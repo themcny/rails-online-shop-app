@@ -27,3 +27,19 @@ a {
   font-variant: bold;
   color: blue;
 }
+
+header
+    {
+      display: table;
+      width: 100%;
+    }
+header h1
+    {
+      display: table-cell;
+      text-align: left;
+    }
+header span
+    {
+      display: table-cell;
+      text-align: right;
+    }

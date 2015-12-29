@@ -1,7 +1,10 @@
-<h1>Products </h1>
-<%= button_to "Add a new product", new_product_path, :method => :get  %>
+<header>
+  <h1>Products</h1>
+    <span>
+    <%= button_to "Add a new product", new_product_path, :method => :get %>
+    </span>
+</header>
 <hr>
-
 <% @products.each do |product| %>
   <div class="title">
     <h3><%= link_to product.title, product_path(product) %></h3>
