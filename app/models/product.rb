@@ -13,7 +13,6 @@ class Product < ActiveRecord::Base
   validates :title, length: { in: 5..15 }
   validates :category, length: { in: 5..30 }
 
-  validates :location, inclusion: { in: %w( In-Stock   Out-of-Stock   In-Transit   Everywhere),
-                                    message: "not a valid location" }
-
+  validates :location, inclusion: { :in => %w( In-Stock   Out-of-Stock   In-Transit   Everywhere) ,
+                                   message: ": \'%{value}\' is not included in the list, try dashes instead of spaces!" }
 end
