@@ -1,2 +1,25 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1><%= @product.title %></h1>
+  <div class="body">
+    <p>Description: <%= @product.body %></p>
+  </div>
+
+  <div class="location">
+    <p>Location: <%= @product.location %></p>
+  </div>
+
+  <div class="category">
+    <p>Category: <%= @product.category %></p>
+  </div>
+
+  <div class="price">
+    <p>Price: <%= @product.price %>$</p>
+  </div>
+
+  <div class="quantity">
+    <p>Quantity: <%= @product.quantity %></p>
+  </div>
+
+  <p>
+  <%= button_to "Delete", @product, :method => :delete, :class => 'button button-delete' %>
+  <%= button_to "Edit", edit_product_path, :method => :get, :class => 'button button-edit'  %>
+</p>
