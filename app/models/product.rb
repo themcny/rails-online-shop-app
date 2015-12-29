@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
   validates :title, :body, :location, :category, presence: true
   validates :price, :quantity,  presence: true
-
-  validates :title, format: { with: /[A-Za-z\s]+/,
+  # \A[a-zA-Z]+\z
+  validates :title, format: { with: /\A[a-zA-Z\s]+\z/,
                               message: "only allows letters" }
   validates :location, :category, format: { with: /[A-Za-z0-9,\. ]{3,50}/,
                                             message: "only allows letters, spaces, and punctuation." }

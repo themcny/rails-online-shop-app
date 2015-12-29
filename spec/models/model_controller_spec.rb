@@ -5,7 +5,7 @@ RSpec.describe Product, :type => :model do
   context "A new product" do
       product = Product.create!(
         title: "Hello",
-         body: "World is a great place to live in even if it's fucked up sometimes",
+        body: "World is a great place to live in even if it's fucked up sometimes",
         location: "Everywhere",
         category: "Web development leitmotiv",
         price: 999,
@@ -29,6 +29,8 @@ RSpec.describe Product, :type => :model do
       expect((product.price).is_a?(Integer)).to be(true)
     end
 
+
+
     product.destroy
 
     # it "can be deleted" do
@@ -37,5 +39,30 @@ RSpec.describe Product, :type => :model do
     #   p expect(product).to be(nil)
     # end
 
+  end
+  context "A new product will not be created if" do
+    it "has numbers in the title" do
+      failure = Product.create(
+        title: "1 Object",
+        body: "World is a great place to live in even if it's fucked up sometimes",
+        location: "Everywhere",
+        category: "Web development leitmotiv",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
+
+    it "body is too short" do
+      failure = Product.create(
+        title: "Title",
+        body: "World",
+        location: "Everywhere",
+        category: "Web development leitmotiv",
+        price: 999,
+        quantity: 1
+        )
+      expect(failure.id).to eq(nil)
+    end
   end
 end
