@@ -3,32 +3,33 @@
 <%= form_for :product, url: product_path(@product), method: :patch do |f| %>
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder => "#{display_error(:title)}" %>
   </p>
 
   <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :body, size: "30x10" %>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, size: "30x10", :placeholder => "#{display_error(:body)}" %>
   </p>
 
   <p>
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, :placeholder => "#{display_error(:location)}" %>
   </p>
 
   <p>
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.text_field :category, :placeholder => "#{display_error(:category)}" %>
+
   </p>
 
   <p>
     <%= f.label :price %><br>
-    <%= f.number_field :price %>
+    <%= f.number_field :price, :placeholder => "#{display_error(:price)}" %>
   </p>
 
   <p>
     <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
+    <%= f.number_field :quantity, :placeholder => "#{display_error(:quantity)}" %>
   </p>
 
   <p>
