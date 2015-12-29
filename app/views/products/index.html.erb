@@ -5,7 +5,14 @@
     </span>
 </header>
 <hr>
+
+
+
 <% @products.each do |product| %>
+ <div class="row">
+
+            <div class="col" style="width:75%">
+
   <div class="title">
     <h3><%= link_to product.title, product_path(product) %></h3>
   </div>
@@ -24,6 +31,11 @@
 
   <div class="quantity">
     <p>Quantity: <%= product.quantity %></quantity>
-  </div><hr>
+  </div>
 
-<% end %>
+            </div>
+    <div class="col" style="width:25%;position:absolute; padding:20px">
+              <img height="155px" style="border-radius:50%" src="http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/dogesmall.jpg" />
+            </div>
+        </div>    <hr>
+        <% end %>
