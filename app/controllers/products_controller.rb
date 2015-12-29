@@ -5,20 +5,27 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new(
-      title:    params[:title],
-      body:     params[:body],
-      location: params[:location],
-      category: params[:category],
-      price:    params[:price],
-      quantity: params[:quantity]
-      )
-    @product.save
+    @product = Product.new
   end
 
-  # def create
-  #   @product.save
-  # end
+  def create
+    p "1111111111111111111111111111111111111111111111111111111111111111111111"
+    p params.inspect
+    @product = Product.create!(
+      title:    params[:product][:title],
+      body:     params[:product][:body],
+      location: params[:product][:location],
+      category: params[:product][:category],
+      price:    params[:product][:price],
+      quantity: params[:product][:quantity]
+      )
+
+    # if @product.save
+      redirect_to products_path,  :notice => "Your product was saved"
+    # else
+    #   render "new"
+    # end
+  end
 
   def show
     @product = Product.find(params[:id])
