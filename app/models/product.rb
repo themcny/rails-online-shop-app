@@ -5,6 +5,6 @@ class Product < ActiveRecord::Base
   validates :title, format: { with: /[A-Za-z\s]+/,
                               message: "only allows letters" }
   validates :location, :category, format: { with: /[A-Za-z0-9,\. ]{3,50}/,
-                                                    message: "only allows letters, spaces, and punctuation." }
+                                            message: "only allows letters, spaces, and punctuation." }
   validates :price, :quantity, numericality: { only_integer: true }
 end
