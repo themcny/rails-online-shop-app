@@ -45,12 +45,12 @@ RSpec.describe Product, :type => :model do
       failure = Product.create(
         title: "1 Object",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "Out of Stock",
+        location: "Out-of-Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Title only allows letters"])
     end
 
     it "body is too short" do
@@ -62,19 +62,19 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Body is too short (minimum is 20 characters)"])
     end
 
     it "body is too long" do
       failure = Product.create(
         title: "Title",
         body: "World"*201,
-        location: "In Transit",
+        location: "In-Transit",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Body is too long (maximum is 1000 characters)"])
     end
 
     it "title is too short" do
@@ -86,7 +86,7 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Title is too short (minimum is 5 characters)"])
     end
 
      it "title is too long" do
@@ -98,7 +98,7 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Title is too long (maximum is 15 characters)"])
     end
 
     it "category is too short" do
@@ -110,7 +110,7 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Category is too short (minimum is 5 characters)"])
     end
 
     it "category is too long" do
@@ -122,7 +122,7 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Category is too long (maximum is 30 characters)"])
     end
 
     it "category contains a number" do
@@ -134,19 +134,19 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Category only allows letters, spaces, and punctuation."])
     end
 
     it "location is not a proper type" do
-      failure = Product.new(
+      failure = Product.create(
         title: "Hello",
         body: "World is a great place to live in even if it's fucked up sometimes",
-        location: "Ev",
+        location: "newish location",
         category: "Web development",
         price: 999,
         quantity: 1
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Location : \'#{failure.location}\' is not included in the list, try dashes instead of spaces!"])
     end
 
     it "quantity is not an integer" do
@@ -158,7 +158,7 @@ RSpec.describe Product, :type => :model do
         price: 999,
         quantity: 'hey'
         )
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Quantity is not a number"])
     end
 
     it "price is not an integer" do
@@ -170,9 +170,7 @@ RSpec.describe Product, :type => :model do
         price: 'nope',
         quantity: 1
         )
-      p failure.errors
-      p failure.errors.full_messages
-      expect(failure.id).to eq(nil)
+      expect(failure.errors.full_messages).to eq(["Price is not a number"])
     end
   end
 end
