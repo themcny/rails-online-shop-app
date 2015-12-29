@@ -1,28 +1,21 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== User Story: Product Tracking System
 
-Things you may want to cover:
+A user can...
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. (Ice Boxed) Login/Logout/Register
+2. See an index of all products
+2. Add a new product to the site
+3. Edit an existing product
+4. Delete an existing product
+5. See the details of a particular product:
+  - Quantity of product
+  - Price of product
+  - Product name
+  - Product description
+  - Product category
+  - Product location (in stock, out of stock, in transit?, etc?)
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+---
