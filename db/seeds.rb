@@ -7,6 +7,6 @@ items.each do |item|
     body: Faker::Lorem.sentence,
     location: "In stock",
     quantity: rand(1..10),
-    price: rand(1..100)
+    price: rand(100..2000)
   )
 end
