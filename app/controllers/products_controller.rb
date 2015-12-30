@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path,  :notice => "Your product was saved"
     else
-      @errors = @product.errors.full_messages
       render "new"
     end
   end
@@ -38,7 +37,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path
     else
-      @errors = @product.errors.full_messages
       render 'edit'
     end
   end

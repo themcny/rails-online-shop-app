@@ -1,29 +1,28 @@
 Rails.application.routes.draw do
 
   get 'users/index'
-
   get 'users/show'
-
   get 'users/edit'
+  get 'register' => 'users#new'
 
-  get 'users/new'
 
-  get 'sessions/new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
 
   get 'welcome/index'
 
+
   get 'products/edit'
-
   get 'products/show'
-
-
   get 'products/index'
-
   get 'products/model'
 
   get 'products/index'
 
   resources :products
+  resources :users
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,15 +1,25 @@
-<%= form_for(@user) do |f| %>
+<h1>Register</h1>
+<div>
+  <%= form_for(@user) do |f| %>
 
-  <p>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </p>
+    <p>
+      <%= f.label :email %>
+      <div class='errors'><%= display_user_error(:email) %></div>
+      <%= f.email_field :email %>
+    </p>
 
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
+    <p>
+      <%= f.label :password %>
+      <div class='errors'><%= display_user_error(:password) %></div>
+      <%= f.password_field :password %>
+    </p>
 
-  <%= f.submit "Login" %>
+    <p>
+      <%= f.label :time_zone %>
+      <%= select("timezone", "hours", @timezone_array) %>
+    </p>
 
-<% end %>
+    <%= f.submit "Register" %>
+
+  <% end %>
+</div>
