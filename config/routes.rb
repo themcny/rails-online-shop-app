@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'users/new'
+
+  get 'sessions/new'
+
   get 'welcome/index'
 
   get 'products/edit'

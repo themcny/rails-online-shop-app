@@ -4,8 +4,8 @@ items.each do |item|
   Product.create!(
     title: item,
     category: "Category here",
-    body: Faker::Lorem.sentence,
-    location: "In stock",
+    body: Faker::Lorem.paragraph,
+    location: "In-Stock",
     quantity: rand(1..10),
     price: rand(100..2000)
   )
