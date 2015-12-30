@@ -7,6 +7,8 @@ items.each do |item|
     body: Faker::Lorem.paragraph,
     location: "In-Stock",
     quantity: rand(1..10),
-    price: rand(100..2000)
+    price: rand(100..2000),
+    expiration_date: Time.parse('2003-10-10').utc,
   )
 end
+
