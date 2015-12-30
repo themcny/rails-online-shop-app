@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'products/index'
 
   resources :products
+  resources :users
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
