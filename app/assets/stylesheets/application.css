@@ -14,6 +14,11 @@
  *= require_self
  */
 
+@media (min-width: 30em) {
+    .row { width: 100%; display: table; table-layout: fixed; }
+    .col { display: table-cell; }
+}
+
 html {
   font-family: sans-serif;
   background-color: #F3F3F3;
@@ -57,7 +62,10 @@ header span
   display: table-cell;
   text-align: right;
 }
-
+.errors {
+  color:red;
+  font-style: italic;
+}
 .button {
   color:white;
   font-family: sans-serif;

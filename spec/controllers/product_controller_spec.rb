@@ -1,34 +1,167 @@
-# Custom tests
 require "rails_helper"
 
-# Controller product creation test
-RSpec.describe Product, :type => :model do
-  context "A new product" do
-      product = Product.create!(
-        title: "Hello",
-        body: "World",
-        location: "Everywhere",
-        category: "Web development leitmotiv",
-        price: 999,
-        quantity: 1
-        )
-
-    it "have all the fields filled up when created" do
-      expect(product != nil).to be(true)
+RSpec.describe ProductsController, :type => :controller do
+  controller do
+    def index
+      render :text => "index called"
     end
 
-    it "have a string data types for title, body, location and category" do
-      expect(
-        (product.title).is_a?(String)    &&
-        (product.body).is_a?(String)     &&
-        (product.location).is_a?(String) &&
-        (product.category).is_a?(String)
-        ).to be(true)
+    def create
+      render :text => "create called"
     end
 
-    it "have a integer different kind of data types for price and quantity" do
-      expect((product.price).is_a?(Integer)).to be(true)
+    def new
+      render :text => "new called"
     end
 
+    def show
+      render :text => "show called"
+    end
+
+    def edit
+      render :text => "edit called"
+    end
+
+    def update
+      render :text => "update called"
+    end
+
+    def destroy
+      render :text => "destroy called"
+    end
+
+    def willerror
+      render :text => "will not render"
+    end
+  end
+
+  describe "#index" do
+    it "responds to GET" do
+      get :index
+      expect(response.body).to eq "index called"
+    end
+
+    it "also responds to POST" do
+      post :index
+      expect(response.body).to eq "index called"
+    end
+
+    it "also responds to PUT" do
+      put :index
+      expect(response.body).to eq "index called"
+    end
+
+    it "also responds to DELETE" do
+      delete :index
+      expect(response.body).to eq "index called"
+    end
+  end
+
+  describe "#create" do
+    it "responds to POST" do
+      post :create
+      expect(response.body).to eq "create called"
+    end
+
+    # And the rest...
+    %w{get post put delete}.each do |calltype|
+      it "responds to #{calltype}" do
+        send(calltype, :create)
+        expect(response.body).to eq "create called"
+      end
+    end
+  end
+
+  describe "#new" do
+    it "responds to GET" do
+      get :new
+      expect(response.body).to eq "new called"
+    end
+
+    # And the rest...
+    %w{get post put delete}.each do |calltype|
+      it "responds to #{calltype}" do
+        send(calltype, :new)
+        expect(response.body).to eq "new called"
+      end
+    end
+  end
+
+  describe "#edit" do
+    it "responds to GET" do
+      get :edit, :id => "anyid"
+      expect(response.body).to eq "edit called"
+    end
+
+    it "requires the :id parameter" do
+      expect { get :edit }.to raise_error
+    end
+
+    # And the rest...
+    %w{get post put delete}.each do |calltype|
+      it "responds to #{calltype}" do
+        send(calltype, :edit, {:id => "anyid"})
+        expect(response.body).to eq "edit called"
+      end
+    end
+  end
+
+  describe "#show" do
+    it "responds to GET" do
+      get :show, :id => "anyid"
+      expect(response.body).to eq "show called"
+    end
+
+    it "requires the :id parameter" do
+      expect { get :show }.to raise_error
+    end
+
+    # And the rest...
+    %w{get post put delete}.each do |calltype|
+      it "responds to #{calltype}" do
+        send(calltype, :show, {:id => "anyid"})
+        expect(response.body).to eq "show called"
+      end
+    end
+  end
+
+  describe "#update" do
+    it "responds to PUT" do
+      put :update, :id => "anyid"
+      expect(response.body).to eq "update called"
+    end
+
+    it "requires the :id parameter" do
+      expect { put :update }.to raise_error
+    end
+
+    # And the rest...
+    %w{get post put delete}.each do |calltype|
+      it "responds to #{calltype}" do
+        send(calltype, :update, {:id => "anyid"})
+        expect(response.body).to eq "update called"
+      end
+    end
+  end
+
+  describe "#destroy" do
+    it "responds to DELETE" do
+      delete :destroy, :id => "anyid"
+      expect(response.body).to eq "destroy called"
+    end
+
+    it "requires the :id parameter" do
+      expect { delete :destroy }.to raise_error
+    end
+
+    # And the rest...
+    %w{get post put delete}.each do |calltype|
+      it "responds to #{calltype}" do
+        send(calltype, :destroy, {:id => "anyid"})
+        expect(response.body).to eq "destroy called"
+      end
+    end
   end
 end
+
+
