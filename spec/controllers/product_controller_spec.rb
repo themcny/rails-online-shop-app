@@ -1,167 +1,134 @@
 require "rails_helper"
 
 RSpec.describe ProductsController, :type => :controller do
-  controller do
-    def index
-      render :text => "index called"
-    end
-
-    def create
-      render :text => "create called"
-    end
-
-    def new
-      render :text => "new called"
-    end
-
-    def show
-      render :text => "show called"
-    end
-
-    def edit
-      render :text => "edit called"
-    end
-
-    def update
-      render :text => "update called"
-    end
-
-    def destroy
-      render :text => "destroy called"
-    end
-
-    def willerror
-      render :text => "will not render"
-    end
-  end
+  # let (:new_product) {FactoryGirl.build(:product)}
+  let!(:new_product) {Product.create({"title"=>"hello",
+  "body" => "is this twenty characters long yet i hope it is",
+  "location" => "In-Stock",
+  "category" => "Home Goods",
+  "price" => 2,
+  "quantity" => 4,
+  })}
 
   describe "#index" do
-    it "responds to GET" do
+    before(:each) do
       get :index
-      expect(response.body).to eq "index called"
+    end
+    it "responds with a 200 code" do
+      expect(response.status).to eq(200)
     end
 
-    it "also responds to POST" do
-      post :index
-      expect(response.body).to eq "index called"
-    end
-
-    it "also responds to PUT" do
-      put :index
-      expect(response.body).to eq "index called"
-    end
-
-    it "also responds to DELETE" do
-      delete :index
-      expect(response.body).to eq "index called"
-    end
-  end
-
-  describe "#create" do
-    it "responds to POST" do
-      post :create
-      expect(response.body).to eq "create called"
-    end
-
-    # And the rest...
-    %w{get post put delete}.each do |calltype|
-      it "responds to #{calltype}" do
-        send(calltype, :create)
-        expect(response.body).to eq "create called"
-      end
+    it 'assigns the product instance variable' do
+      p assigns(:products)
+      expect(assigns(:products)).to be_an(ActiveRecord::Relation)
     end
   end
 
   describe "#new" do
-    it "responds to GET" do
+    before(:each) do
       get :new
-      expect(response.body).to eq "new called"
     end
+    it 'assigns the product instance variable' do
+      expect(assigns(:product)).to be_a_new(Product)
+    end
+  end
 
-    # And the rest...
-    %w{get post put delete}.each do |calltype|
-      it "responds to #{calltype}" do
-        send(calltype, :new)
-        expect(response.body).to eq "new called"
+
+  describe "#create" do
+    let(:params) {{"product"=>{"title"=>"hello",
+      "body" => "is this twenty characters long yet i hope it is",
+      "location" => "In-Stock",
+      "category" => "Home Goods",
+      "price" => 2,
+      "quantity" => 4,
+      }}}
+    let(:bad_params) {{"product"=>{"title"=>"hello",
+      "body" => "is this twenty characters long yet i hope it is",
+      "location" => "In-Stock",
+      "category" => "Home Goods",
+      "price" => 2,
+      "quantity" => 4.5,
+      }}}
+    it 'increments the total number of products by 1' do
+      expect{post :create, params}.to change{Product.count}.by(1)
+    end
+    context 'when a new product is successfully created' do
+      it 'responds with a status of 302' do
+        post :create, params
+        expect(response.status).to eq(302)
+      end
+    end
+    context 'when a new product is not successfully created' do
+      it 'responds with a status of 200' do
+        post :create, bad_params
+        expect(response.status).to eq(200)
       end
     end
   end
 
-  describe "#edit" do
-    it "responds to GET" do
-      get :edit, :id => "anyid"
-      expect(response.body).to eq "edit called"
-    end
-
-    it "requires the :id parameter" do
-      expect { get :edit }.to raise_error
-    end
-
-    # And the rest...
-    %w{get post put delete}.each do |calltype|
-      it "responds to #{calltype}" do
-        send(calltype, :edit, {:id => "anyid"})
-        expect(response.body).to eq "edit called"
-      end
-    end
-  end
 
   describe "#show" do
-    it "responds to GET" do
-      get :show, :id => "anyid"
-      expect(response.body).to eq "show called"
+    let(:new_product) {Product.create({"title"=>"hello",
+      "body" => "is this twenty characters long yet i hope it is",
+      "location" => "In-Stock",
+      "category" => "Home Goods",
+      "price" => 2,
+      "quantity" => 4,
+      })}
+    before(:each) do
+      get :show, id: new_product.id
+    end
+    it 'assigns the product instance variable' do
+      expect(assigns(:product)).to be_a(Product)
     end
 
-    it "requires the :id parameter" do
-      expect { get :show }.to raise_error
-    end
-
-    # And the rest...
-    %w{get post put delete}.each do |calltype|
-      it "responds to #{calltype}" do
-        send(calltype, :show, {:id => "anyid"})
-        expect(response.body).to eq "show called"
-      end
-    end
-  end
-
-  describe "#update" do
-    it "responds to PUT" do
-      put :update, :id => "anyid"
-      expect(response.body).to eq "update called"
-    end
-
-    it "requires the :id parameter" do
-      expect { put :update }.to raise_error
-    end
-
-    # And the rest...
-    %w{get post put delete}.each do |calltype|
-      it "responds to #{calltype}" do
-        send(calltype, :update, {:id => "anyid"})
-        expect(response.body).to eq "update called"
-      end
+    it 'responds with a status of 200' do
+      expect(response.status).to eq(200)
     end
   end
 
   describe "#destroy" do
-    it "responds to DELETE" do
-      delete :destroy, :id => "anyid"
-      expect(response.body).to eq "destroy called"
+
+    it 'responds with a status of 302' do
+      get :destroy, id: new_product.id
+      expect(response.status).to eq(302)
+    end
+    it 'decrements the total number of products by 1' do
+      expect{delete :destroy, id: new_product.id}.to change{Product.count}.by(-1)
+    end
+  end
+
+  describe "#edit and #update" do
+    let(:old_product) {Product.create({"title"=>"hello",
+      "body" => "is this twenty characters long yet i hope it is",
+      "location" => "In-Stock",
+      "category" => "Home Goods",
+      "price" => 2,
+      "quantity" => 4,
+      })}
+    context "When rendering an edit page" do
+      it 'responds with a status of 200' do
+        get :edit, id: old_product.id
+        expect(response.status).to eq(200)
+      end
     end
 
-    it "requires the :id parameter" do
-      expect { delete :destroy }.to raise_error
-    end
+    context "When updating product" do
+      let (:params) {{"product" =>{title: "goodbye"}, id: old_product.id}}
+      let (:bad_params) {{"product" =>{title: "g"}, id: old_product.id}}
+      it 'updates proper attribute of object' do
+        patch :update, params
+        expect(old_product.reload.title).to eq("goodbye")
+      end
+      it 'responds with a status of 302' do
+        patch :update, params
+        expect(response.status).to eq(302)
+      end
 
-    # And the rest...
-    %w{get post put delete}.each do |calltype|
-      it "responds to #{calltype}" do
-        send(calltype, :destroy, {:id => "anyid"})
-        expect(response.body).to eq "destroy called"
+      it 'does not allow edits that violate validations' do
+        patch :update, bad_params
+        expect(response.status).to eq(200)
       end
     end
   end
 end
-
-
