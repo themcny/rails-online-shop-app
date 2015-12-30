@@ -24,7 +24,6 @@ class UsersController < ApplicationController
                        "UTC+08:00", "UTC+09:00", "UTC+10:00", "UTC+11:00",
                        "UTC+12:00", "UTC+13:00", "UTC+14:00"]
     @user = User.new(user_params)
-    p user_params
     if @user.save
       redirect_to users_path
     else
