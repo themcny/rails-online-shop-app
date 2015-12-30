@@ -14,7 +14,7 @@
 
     <p>
       <%= f.label :time_zone %>
-      <%= options_for_select(@timezones) %>
+      <%= select("timezone", "hours", @timezone_array) %>
     </p>
 
     <%= f.submit "Register" %>
