@@ -14,6 +14,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    log_out
+    redirect_to products_path
+  end
+
 
   private
 
