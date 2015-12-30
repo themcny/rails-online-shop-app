@@ -23,7 +23,7 @@ class UsersController < ApplicationController
                        "UTC+04:00", "UTC+05:00", "UTC+06:00", "UTC+07:00",
                        "UTC+08:00", "UTC+09:00", "UTC+10:00", "UTC+11:00",
                        "UTC+12:00", "UTC+13:00", "UTC+14:00"]
-    @user = User.new(user_params)    # Not the final implementation!
+    @user = User.new(user_params)
     if @user.save
       redirect_to users_path
     else
@@ -34,6 +34,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end
