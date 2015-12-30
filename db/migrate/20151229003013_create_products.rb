@@ -5,6 +5,8 @@ class CreateProducts < ActiveRecord::Migration
       t.text     :body, :location
       t.integer  :price
       t.integer  :quantity
+      t.datetime :expiration_date
+
       t.timestamps null: false
     end
   end

@@ -41,6 +41,12 @@
   </p>
 
   <p>
+    <%= f.label :expiration_date %><br>
+    <div class='errors'><%= display_error(:expiration_date) %></div>
+    <%= date_select :product, :expiration_date %>
+  </p>
+
+  <p>
     <%= f.submit "Add", :class => 'button button-create'%>
   </p>
 <% end %>
