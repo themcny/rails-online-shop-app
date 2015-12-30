@@ -4,11 +4,13 @@
 
     <p>
       <%= f.label :email %>
+      <div class='errors'><%= display_user_error(:email) %></div>
       <%= f.email_field :email %>
     </p>
 
     <p>
       <%= f.label :password %>
+      <div class='errors'><%= display_user_error(:password) %></div>
       <%= f.password_field :password %>
     </p>
 
