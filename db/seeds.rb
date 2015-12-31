@@ -12,3 +12,7 @@ items.each do |item|
   )
 end
 
+admin = User.new(email: 'admin@theboss.com')
+admin.password = "password"
+admin.admin = true
+admin.save

@@ -1,7 +1,9 @@
 <header>
   <h1>Products</h1>
     <span>
-    <%= button_to "Add a new product", new_product_path, :method => :get, :class => 'button button-create' %>
+    <% if current_user && current_user.admin %>
+      <%= button_to "Add a new product", new_product_path, :method => :get, :class => 'button button-create' %>
+    <% end %>
     </span>
 </header>
 <hr>

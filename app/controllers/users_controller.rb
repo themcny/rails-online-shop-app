@@ -11,11 +11,12 @@ class UsersController < ApplicationController
 
   def create
     @timezone_array = ActiveSupport::TimeZone.zones_map.values.collect{|z| z.tzinfo.identifier}
+
     @user = User.new(user_params)
     @user.timezone = params["timezone"]["location"]
     if @user.save
       log_in(@user)
-      redirect_to users_path
+      redirect_to products_path
     else
       render 'new'
     end
