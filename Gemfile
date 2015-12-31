@@ -16,6 +16,8 @@ gem 'simplecov', :require => false, :group => :test
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~>4.0.0.alpha3'
 
+gem 'carrierwave'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'byebug'

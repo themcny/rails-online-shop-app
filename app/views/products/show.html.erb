@@ -1,4 +1,9 @@
 <h1><%= @product.title %></h1>
+<div class= "product_img">
+  <p><%= @product.product_img %></p>
+  <img src=<%="#{@product.product_img}"%> width=150 height=150>
+</div>
+
 <div class="body">
   <p>Description: <%= @product.body %></p>
 </div>

@@ -1,12 +1,11 @@
-
- @import 'bootstrap';
+@import 'bootstrap';
 
 @media (min-width: 30em) {
     .row { width: 100%; display: table; table-layout: fixed; }
     .col { display: table-cell; }
 }
 
-@media screen and (min-width: 0px) and (max-width: 40em) {
+@media screen and (min-width: 0px) and (max-width: 480px) {
   #image-doge { display: none; }
   .borderz {   left:0%; right:0%; width:90%;}
 }

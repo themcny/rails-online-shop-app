@@ -18,6 +18,10 @@
         <h3><%= link_to product.title, product_path(product) %></h3>
       </div>
 
+      <div class= "product_img form-inline pull-xs-right">
+        <%= link_to image_tag(product.product_img, :width => 150, :height => 150), "/products/#{product.id}"%>
+      </div>
+
       <div class="location">
         <p>Location: <%= product.location %></p>
       </div>
@@ -37,9 +41,6 @@
         <p>Expires On: <%= change_timezone(product.expiration_date) %></p>
       </div>
 
-    </div>
-    <div class="col" style="width:25%;position:absolute; padding:20px">
-      <img height="155px" id="image-doge" style="border-radius:50%" src="http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/dogesmall.jpg" />
     </div>
   </div>    <hr>
 <% end %>

@@ -12,26 +12,27 @@
   <%= link_to("sad shop", root_path, { class: "navbar-brand" }) %>
   <% if current_user %>
       <li class="nav-item">
-        <%= link_to "Logout", logout_path, method: :delete %>
+        <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        Today's Date: <%= change_timezone(Time.now) %>
-        in <%= current_user.timezone %>
+        <p class="nav-link">Today's Date: <%= change_timezone(Time.now) %></p>
       </li>
-
+      <div class = "form-inline pull-xs-right" width=50em height=50em>
+        <%= link_to image_tag(current_user.avatar, :width => 50, :height => 50), "/users/#{current_user.id}"%>
+      </div>
   <% else %>
     <li class="nav-item">
-      <%= link_to "Login", login_path, method: :get %>
+      <%= link_to "Login", login_path, method: :get, class: 'nav-link' %>
     </li>
     <li class="nav-item">
-      <%= link_to "Register", register_path, method: :get %>
+      <%= link_to "Register", register_path, method: :get, class: 'nav-link' %>
     </li>
   <% end %>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <!-- <form class="form-inline pull-xs-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-success-outline" type="submit">Search</button>
-  </form>
+  </form> -->
 </nav>
 <%= yield %>
 </body>

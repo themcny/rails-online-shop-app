@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  mount_uploader :product_img, ProductImgUploader
+
   validates :title, :body, :location, :category, presence: true
   validates :price, :quantity,  presence: true
   # \A[a-zA-Z]+\z
