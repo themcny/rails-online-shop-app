@@ -13,4 +13,10 @@ module ApplicationHelper
     end
   end
 
+  def render_errors_conditionally(object, field)
+    unless object.errors.messages[field].empty?
+      render :partial => 'display_error', locals: { label: field }
+    end
+  end
+
 end
