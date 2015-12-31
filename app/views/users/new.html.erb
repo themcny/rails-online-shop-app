@@ -25,6 +25,11 @@
       <%= select("timezone", "location", @timezone_array) %>
     </p>
 
+    <p>
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </p>
+
     <%= f.submit "Register" %>
 
   <% end %>
