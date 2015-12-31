@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user && current_user.id == params[:id]
+    if current_user && current_user.id == params[:id].to_i
       @user = User.find(current_user.id)
     elsif current_user && current_user.admin
       @user = User.find(params[:id])
