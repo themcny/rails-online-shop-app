@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to products_path
     else
+      session[:errors] = "Incorrect email or password"
       render 'new'
+      session[:errors] = nil
     end
   end
 
