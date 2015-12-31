@@ -5,18 +5,18 @@
     <p>
       <%= f.label :email %>
       <div class='errors'><%= display_user_error(:email) %></div>
-      <%= f.email_field :email %>
+      <%= f.text_field :email %>
     </p>
 
     <p>
       <%= f.label :password %>
-      <div class='errors'><%= display_user_error(:password) %></div>
+      <div class='errors'><%= display_user_error(:password_confirmation) %></div>
       <%= f.password_field :password %>
     </p>
 
     <p>
       <%= f.label :password_confirmation %>
-      <div class='errors'><%= display_user_error(:password) %></div>
+      <div class='errors'><%= display_user_error(:password_confirmation) %></div>
       <%= f.password_field :password_confirmation %>
     </p>
 
