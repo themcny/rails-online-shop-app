@@ -2,19 +2,24 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    p "succesffully reached route"
   end
 
   def new
-    @product = Product.new
+    if current_user && current_user.admin
+      @product = Product.new
+    else
+      redirect_to products_path
+    end
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to products_path,  :notice => "Your product was saved"
-    else
-      render "new"
+    if current_user && current_user.admin
+      @product = Product.new(product_params)
+      if @product.save
+        redirect_to products_path,  :notice => "Your product was saved"
+      else
+        render "new"
+      end
     end
   end
 
@@ -23,22 +28,30 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to products_path
+    if current_user && current_user.admin
+      @product = Product.find(params[:id])
+      @product.destroy
+      redirect_to products_path
+    end
   end
 
   def edit
-    @product = Product.find(params[:id])
+    if current_user && current_user.admin
+      @product = Product.find(params[:id])
+    else
+      redirect_to products_path
+    end
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.assign_attributes(product_params)
-    if @product.save
-      redirect_to products_path
-    else
-      render 'edit'
+    if current_user && current_user.admin
+      @product = Product.find(params[:id])
+      @product.assign_attributes(product_params)
+      if @product.save
+        redirect_to products_path
+      else
+        render 'edit'
+      end
     end
   end
 

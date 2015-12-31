@@ -1,29 +1,31 @@
 <h1><%= @product.title %></h1>
-  <div class="body">
-    <p>Description: <%= @product.body %></p>
-  </div>
+<div class="body">
+  <p>Description: <%= @product.body %></p>
+</div>
 
-  <div class="location">
-    <p>Location: <%= @product.location %></p>
-  </div>
+<div class="location">
+  <p>Location: <%= @product.location %></p>
+</div>
 
-  <div class="category">
-    <p>Category: <%= @product.category %></p>
-  </div>
+<div class="category">
+  <p>Category: <%= @product.category %></p>
+</div>
 
-  <div class="price">
-    <p>Price: $<%= (@product.price/100.00) %></p>
-  </div>
+<div class="price">
+  <p>Price: $<%= (@product.price/100.00) %></p>
+</div>
 
-  <div class="quantity">
-    <p>Quantity: <%= @product.quantity %></p>
-  </div>
+<div class="quantity">
+  <p>Quantity: <%= @product.quantity %></p>
+</div>
 
-  <div class="expiration_date">
-    <p>Expires At: <%= product.expiration_date %></p>
-  </div>
+<div class="expiration_date">
+  <p>Expires At: <%= @product.expiration_date %></p>
+</div>
 
-  <p>
-  <%= button_to "Delete", @product, :method => :delete, :class => 'button button-delete' %>
-  <%= button_to "Edit", edit_product_path, :method => :get, :class => 'button button-edit'  %>
+<p>
+  <% if current_user && current_user.admin %>
+    <%= button_to "Delete", @product, :method => :delete, :class => 'button button-delete' %>
+    <%= button_to "Edit", edit_product_path, :method => :get, :class => 'button button-edit'  %>
+  <% end  %>
 </p>
