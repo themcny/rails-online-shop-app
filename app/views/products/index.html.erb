@@ -11,36 +11,35 @@
 
 
 <% @products.each do |product| %>
- <div class="row">
+  <div class="row">
+    <div class="col" style="width:75%">
 
-            <div class="col" style="width:75%">
+      <div class="title">
+        <h3><%= link_to product.title, product_path(product) %></h3>
+      </div>
 
-  <div class="title">
-    <h3><%= link_to product.title, product_path(product) %></h3>
-  </div>
+      <div class="location">
+        <p>Location: <%= product.location %></p>
+      </div>
 
-  <div class="location">
-    <p>Location: <%= product.location %></p>
-  </div>
+      <div class="category">
+        <p>Category: <%= product.category %></p>
+      </div>
 
-  <div class="category">
-    <p>Category: <%= product.category %></p>
-  </div>
+      <div class="price">
+        <p>Price: $<%= (product.price/100.00) %></p>
+      </div>
 
-  <div class="price">
-    <p>Price: $<%= (product.price/100.00) %></p>
-  </div>
+      <div class="quantity">
+        <p>Quantity: <%= product.quantity %></p>
+      </div>
+      <div class="expiration_date">
+        <p>Expires On: <%= change_timezone(product.expiration_date) %></p>
+      </div>
 
-  <div class="quantity">
-    <p>Quantity: <%= product.quantity %></p>
-  </div>
-  <div class="expiration_date">
-    <p>Expires On: <%= change_timezone(product.expiration_date) %></p>
-  </div>
-
-            </div>
+    </div>
     <div class="col" style="width:25%;position:absolute; padding:20px">
-              <img height="155px" id="image-doge" style="border-radius:50%" src="http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/dogesmall.jpg" />
-            </div>
-        </div>    <hr>
-        <% end %>
+      <img height="155px" id="image-doge" style="border-radius:50%" src="http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/dogesmall.jpg" />
+    </div>
+  </div>    <hr>
+<% end %>
