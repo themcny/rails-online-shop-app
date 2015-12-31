@@ -15,7 +15,7 @@
         <%= link_to "Logout", logout_path, method: :delete %>
       </li>
       <li class="nav-item">
-        <%= Time.now.in_time_zone(current_user.timezone).strftime("Today's Date: %m/%d/%Y at %I:%M%p") %>
+        Today's Date: <%= change_timezone(Time.now) %>
         in <%= current_user.timezone %>
       </li>
 

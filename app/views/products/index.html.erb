@@ -32,11 +32,10 @@
   </div>
 
   <div class="quantity">
-    <p>Quantity: <%= product.quantity %></quantity>
+    <p>Quantity: <%= product.quantity %></p>
   </div>
-
   <div class="expiration_date">
-    <p>Expires At: <%= product.expiration_date %></quantity>
+    <p>Expires On: <%= change_timezone(product.expiration_date) %></p>
   </div>
 
             </div>

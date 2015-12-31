@@ -12,4 +12,11 @@ module ApplicationHelper
     end
   end
 
+  def change_timezone(time)
+    if current_user
+      time.in_time_zone(current_user.timezone).strftime(" %m/%d/%Y at %I:%M%p")
+    else
+      time.localtime.strftime(" %m/%d/%Y at %I:%M%p")
+    end
+  end
 end
