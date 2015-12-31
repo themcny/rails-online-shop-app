@@ -19,7 +19,6 @@ RSpec.describe ProductsController, :type => :controller do
     end
 
     it 'assigns the product instance variable' do
-      p assigns(:products)
       expect(assigns(:products)).to be_an(ActiveRecord::Relation)
     end
   end
