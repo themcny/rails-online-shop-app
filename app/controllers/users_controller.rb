@@ -1,7 +1,23 @@
 class UsersController < ApplicationController
 
+  def index
+    if current_user && current_user.admin
+      @users = User.all
+    else
+      redirect_to login_path
+      session[:errors] = "Login as an admin to view that"
+    end
+  end
+
   def show
-    @user = User.find(params[:id])
+    if current_user && current_user.id == params[:id]
+      @user = User.find(current_user.id)
+    elsif current_user && current_user.admin
+      @user = User.find(params[:id])
+    else
+      redirect_to login_path
+      session[:errors] = "You must login to view that!"
+    end
   end
 
   def new
