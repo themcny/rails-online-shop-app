@@ -55,6 +55,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add_to_cart
+    # p "$- "*100
+    # p params.inspect
+    # @cart_product = params
+  end
+
   private
 
   def product_params
