@@ -17,6 +17,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~>4.0.0.alpha3'
 
 gem 'carrierwave'
+gem 'acts_as_shopping_cart', '~> 0.2.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

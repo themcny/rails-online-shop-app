@@ -17,4 +17,5 @@ class Product < ActiveRecord::Base
 
   validates :location, inclusion: { :in => %w( In-Stock   Out-of-Stock   In-Transit   Everywhere) ,
                                    message: ": \'%{value}\' is not included in the list, try dashes instead of spaces!" }
+
 end
