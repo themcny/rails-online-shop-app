@@ -12,10 +12,10 @@ class Product < ActiveRecord::Base
   validates :price, :quantity, numericality: { only_integer: true }
 
   validates :body, length: { in: 20..1000 }
-  validates :title, length: { in: 5..15 }
+  validates :title, length: { in: 3..15 }
   validates :category, length: { in: 5..30 }
 
-  validates :location, inclusion: { :in => %w( In-Stock   Out-of-Stock   In-Transit   Everywhere) ,
+  validates :location, inclusion: { :in => %w( In-Stock   Out-of-Stock   In-Transit   Everywhere   Expired ) ,
                                    message: ": \'%{value}\' is not included in the list, try dashes instead of spaces!" }
 
 end

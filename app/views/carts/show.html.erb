@@ -1,2 +1,10 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h1>Your Shopping Cart</h1>
+<% @cart_products.each do |cart_product| %>
+  <p>Title: <%= Product.find(cart_product.item_id).title %></p>
+  <p>Quantity: <%= cart_product.quantity %></p>
+  <div class= "product_img">
+    <img src=<%="#{Product.find(cart_product.item_id).product_img}"%> width=150 height=150>
+  </div>
+  <%= button_to('Remove From Cart', { action: 'destroy', id: cart_product.id }, method: :delete, data: { confirm: "Are you sure?" }) %>
+<% end %>
+<!-- Checkout Button? -->

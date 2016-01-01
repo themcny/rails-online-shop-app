@@ -2,6 +2,13 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @products.each do |product|
+      if product.quantity <= 0
+        product.update_attributes(location: "Out-Of-Stock")
+      elsif product.expiration_date < DateTime.now.utc
+        product.update_attributes(location: "Expired")
+      end
+    end
   end
 
   def new
