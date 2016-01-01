@@ -11,8 +11,8 @@
 
 
 <% @products.each do |product| %>
-  <div class="row">
-    <div class="col" style="width:75%">
+  <!-- <div class= "row"> -->
+    <div class="col-xs-12 col-md-4">
 
       <div class="title">
         <h3><%= link_to product.title, product_path(product) %></h3>
@@ -42,5 +42,5 @@
       </div>
 
     </div>
-  </div>    <hr>
+  <!-- </div> -->
 <% end %>
