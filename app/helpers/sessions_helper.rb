@@ -13,6 +13,7 @@ module SessionsHelper
 
   def log_out
     session.delete(:user_id)
+    CartProduct.destroy_all
     @current_user = nil
   end
 end

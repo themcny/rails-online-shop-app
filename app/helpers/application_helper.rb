@@ -19,4 +19,14 @@ module ApplicationHelper
       time.localtime.strftime(" %m/%d/%Y at %I:%M%p")
     end
   end
+
+  def buyable(product_object)
+    if product_object.quantity <= 0
+      return false
+    elsif product_object.expiration_date < DateTime.now.utc
+      return false
+    else
+      return true
+    end
+  end
 end
