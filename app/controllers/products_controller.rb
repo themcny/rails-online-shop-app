@@ -2,6 +2,11 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @products.each do |product|
+      if product.quantity <= 0
+        product.update_attributes(location: "Out-Of-Stock")
+      end
+    end
   end
 
   def new
