@@ -9,12 +9,12 @@ RSpec.feature "New product form fill", :type => :feature do
 
   context "No current user" do
     scenario "has login button" do
-      visit '/'
+      visit root_path
 
       expect(page).to have_link('Login')
     end
     scenario "has login button" do
-      visit '/'
+      visit root_path
 
       expect(page).to have_link('Register')
     end
@@ -22,18 +22,28 @@ RSpec.feature "New product form fill", :type => :feature do
 
   context "Registering a new user" do
     scenario "can register with proper information" do
-      visit '/register'
+      visit register_path
 
       fill_in "Email", :with => Faker::Internet.email
       fill_in "Password", :with => "123456"
       fill_in "Password confirmation", :with => "123456"
       click_button "Register"
 
-      current_path.should == '/products'
+      expect(page).to have_link('Logout')
+    end
+    scenario "after successful registration redirect to index" do
+      visit register_path
+
+      fill_in "Email", :with => Faker::Internet.email
+      fill_in "Password", :with => "123456"
+      fill_in "Password confirmation", :with => "123456"
+      click_button "Register"
+
+      expect(current_path).to eq(products_path)
     end
 
     scenario "cannot register without matching passwords" do
-      visit '/register'
+      visit register_path
 
       fill_in "Email", :with => Faker::Internet.email
       fill_in "Password", :with => "123456"
@@ -44,7 +54,7 @@ RSpec.feature "New product form fill", :type => :feature do
     end
 
     scenario "cannot register without proper email" do
-      visit '/register'
+      visit register_path
 
       fill_in "Email", :with => Faker::Lorem.word
       fill_in "Password", :with => "123456"
@@ -57,17 +67,17 @@ RSpec.feature "New product form fill", :type => :feature do
 
   context "An admin is on the login page" do
     scenario "and can log in and redirect to products index page" do
-      visit "/login"
+      visit login_path
 
       fill_in "Email", :with => admin.email
       fill_in "Password", :with => "123456"
       click_button "Log In"
 
-      current_path.should == "/products"
+      expect(current_path).to eq(products_path)
     end
 
     scenario "and gets the add button on products index page" do
-      visit "/login"
+      visit login_path
 
       fill_in "Email", :with => admin.email
       fill_in "Password", :with => "123456"
@@ -79,7 +89,7 @@ RSpec.feature "New product form fill", :type => :feature do
 
   context "An admin is already logged in" do
     before(:each) do
-      visit "/login"
+      visit login_path
 
       fill_in "Email", :with => admin.email
       fill_in "Password", :with => "123456"
@@ -94,7 +104,7 @@ RSpec.feature "New product form fill", :type => :feature do
     scenario "An admin can log out and redirect to products index" do
       click_link "Logout"
 
-      current_path.should == "/products"
+      expect(current_path).to eq(products_path)
     end
   end
 
