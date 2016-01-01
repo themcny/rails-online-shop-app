@@ -10,7 +10,7 @@ items = ["Object One", "Object Two", "Object Three", "Object Four", "Object Five
       price: rand(100..2000),
       expiration_date: Time.parse('2003-10-10').utc,
     )
-  product.product_img = Rails.root.join("../rails-online-shop-challenge/app/assets/images/cat_package.jpg").open
+  # product.product_img = Rails.root.join("../rails-online-shop-challenge/app/assets/images/cat_package.jpg").open
   product.save
 end
 
