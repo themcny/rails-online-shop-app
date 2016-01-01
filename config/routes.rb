@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'carts/new'
   get 'carts/show'
 
+  get 'add_to_cart' => 'products#add_to_cart'
+
   get 'users/index'
   get 'users/show'
   get 'users/edit'
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
 
   resources :products
   resources :users
+  resources :carts
 
   root 'products#index'
   # The priority is based upon order of creation: first created -> highest priority.
