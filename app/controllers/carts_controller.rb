@@ -1,8 +1,8 @@
 class CartsController < ApplicationController
   def show
     if Cart.find(current_user.id)
-      current_cart = Cart.find(current_user.id)
-      @cart_products = CartProduct.where(owner_id: current_cart.id)
+      @current_cart = Cart.find(current_user.id)
+      @cart_products = CartProduct.where(owner_id: @current_cart.id)
       @product_objects = []
       @cart_products.each do |cart_product|
         @product_objects << Product.find(cart_product.item_id)
@@ -20,7 +20,6 @@ class CartsController < ApplicationController
       @product.quantity -= 1
       @product.save
     end
-
     cart_items = CartProduct.where(owner_id: @cart.id)
 
     redirect_to carts_show_path
@@ -36,5 +35,4 @@ class CartsController < ApplicationController
     end
     redirect_to products_path
   end
-
 end

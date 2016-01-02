@@ -7,4 +7,6 @@
   </div>
   <%= button_to('Remove From Cart', { action: 'destroy', id: cart_product.id }, method: :delete, data: { confirm: "Are you sure?" }) %>
 <% end %>
+<p></p>
+<p>Total: <%= (@current_cart.total/100).to_f.round(2) %></p>
 <!-- Checkout Button? -->
