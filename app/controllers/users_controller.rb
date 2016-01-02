@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.timezone = params["timezone"]["location"]
     if @user.save
+      UserMailer.welcome_email(@user).deliver_now
       log_in(@user)
       redirect_to products_path
     else
