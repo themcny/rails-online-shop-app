@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'carts/index'
   get 'carts/edit'
-  get 'carts/new'
   get 'carts/show'
-
-  get 'add_to_cart' => 'products#add_to_cart'
 
   get 'users/index'
   get 'users/show'

@@ -9,6 +9,7 @@ RSpec.describe ProductsController, :type => :controller do
   "category" => "Home Goods",
   "price" => 2,
   "quantity" => 4,
+  "expiration_date" => Time.parse('2020-05-10'),
   })}
   admin = User.new(email: Faker::Internet.email)
   admin.password = "123456"
@@ -177,6 +178,7 @@ RSpec.describe ProductsController, :type => :controller do
         expect(:post => '/update').not_to be_routable
       end
     end
-
   end
+
+
 end

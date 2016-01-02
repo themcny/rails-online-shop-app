@@ -1,16 +1,4 @@
 class CartsController < ApplicationController
-  def index
-
-  end
-
-  def new
-
-  end
-
-  def create
-
-  end
-
   def show
     if Cart.find(current_user.id)
       current_cart = Cart.find(current_user.id)
