@@ -17,7 +17,7 @@ end
       price: rand(100..2000),
       expiration_date: random_date,
     )
-  product.product_img = Rails.root.join("../rails-online-shop-challenge/app/assets/images/cat_package.jpg").open
+  # product.product_img = Rails.root.join("../rails-online-shop-challenge/app/assets/images/cat_package.jpg").open
   product.save
 end
 
