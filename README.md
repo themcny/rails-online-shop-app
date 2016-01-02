@@ -1,6 +1,10 @@
-## Rails online shop
+## Rails Online Shop
 
-[Last Heroku deployed version](http://rails-online-shop-paul-nicole.herokuapp.com/products)
+[Last Version Deployed to Heroku](http://rails-online-shop-paul-nicole.herokuapp.com/products)
+
+The latest changes are on the branch named 'themcny'.
+
+This project was worked on by [Nicole](http://github.com/themcny) and [Isaac](https://github.com/SynnisterDomini) with [Paul](http://github.com/gastongouron).
 
 ### Requirements
 - There is no starter repo, you are responsible for creating a git repo, following proper git workflow, and pushing code to github.
