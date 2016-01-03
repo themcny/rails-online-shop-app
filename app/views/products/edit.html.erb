@@ -3,39 +3,50 @@
 <%= form_for :product, url: product_path(@product), method: :patch do |f| %>
   <p>
     <%= f.label :title %><br>
-    <div class='errors'><%= display_error(:title) %></div>
+    <%= render_errors_conditionally(@product, :title) %>
     <%= f.text_field :title %>
   </p>
 
   <p>
     <%= f.label :body %><br>
-    <div class='errors'><%= display_error(:body) %></div>
+    <%= render_errors_conditionally(@product, :body) %>
     <%= f.text_area :body, size: "30x10" %>
   </p>
 
   <p>
     <%= f.label :location %><br>
-    <div class='errors'><%= display_error(:location) %></div>
+    <%= render_errors_conditionally(@product, :location) %>
     <%= f.text_field :location %>
   </p>
 
   <p>
     <%= f.label :category %><br>
-    <div class='errors'><%= display_error(:category) %></div>
+    <%= render_errors_conditionally(@product, :category) %>
     <%= f.text_field :category %>
 
   </p>
 
   <p>
     <%= f.label :price %><br>
-    <div class='errors'><%= display_error(:price) %></div>
+    <%= render_errors_conditionally(@product, :price) %>
     <%= f.number_field :price %>
   </p>
 
   <p>
     <%= f.label :quantity %><br>
-    <div class='errors'><%= display_error(:quantity) %></div>
+    <%= render_errors_conditionally(@product, :quantity) %>
     <%= f.number_field :quantity %>
+  </p>
+
+  <p>
+    <%= f.label :expiration_date %><br>
+    <%= render_errors_conditionally(@product, :expiration_date) %>
+    <%= date_select :product, :expiration_date %>
+  </p>
+
+  <p>
+    <%= f.label :product_img %>
+    <%= f.file_field :product_img %>
   </p>
 
   <p>

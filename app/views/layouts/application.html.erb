@@ -6,9 +6,38 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body class="borderz">
+  <nav class="navbar navbar-light bg-faded">
+    <ul class="nav navbar-nav">
+  <%= link_to("sad shop", root_path, { class: "navbar-brand" }) %>
+  <% if current_user %>
+      <li class="nav-item">
+        <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link' %>
+      </li>
+      <li>
+        <%= link_to "Your Cart", carts_show_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <p class="nav-link">Today's Date: <%= change_timezone(Time.now) %></p>
+      </li>
+      <div class = "form-inline pull-xs-right" width=50em height=50em>
+        <%= link_to image_tag(current_user.avatar, :width => 50, :height => 50), "/users/#{current_user.id}"%>
+      </div>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to "Login", login_path, method: :get, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Register", register_path, method: :get, class: 'nav-link' %>
+    </li>
+  <% end %>
+  </ul>
+  <!-- <form class="form-inline pull-xs-right">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-success-outline" type="submit">Search</button>
+  </form> -->
+</nav>
 <%= yield %>
-
 </body>
 </html>

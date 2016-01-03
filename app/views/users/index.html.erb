@@ -1,0 +1,9 @@
+<h1>Users</h1>
+<ol>
+<% @users.each do |user| %>
+  <li>
+    <p>Email: <%= user.email %></p>
+    <p>Timezone: <%= user.timezone %></p>
+  </li>
+<% end %>
+</ol>

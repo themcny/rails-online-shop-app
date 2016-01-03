@@ -1,0 +1,36 @@
+<h1>Register</h1>
+<div>
+  <%= form_for(@user) do |f| %>
+
+    <p>
+      <%= f.label :email %>
+      <%= render_errors_conditionally(@user, :email) %>
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :password %>
+      <%= render_errors_conditionally(@user, :password) %>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label :password_confirmation %>
+      <%= render_errors_conditionally(@user, :password_confirmation) %>
+      <%= f.password_field :password_confirmation %>
+    </p>
+
+    <p>
+      <%= f.label :time_zone %>
+      <%= select("timezone", "location", @timezone_array) %>
+    </p>
+
+    <p>
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </p>
+
+    <%= f.submit "Register" %>
+
+  <% end %>
+</div>

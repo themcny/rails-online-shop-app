@@ -1,40 +1,35 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import 'bootstrap';
 
 @media (min-width: 30em) {
     .row { width: 100%; display: table; table-layout: fixed; }
     .col { display: table-cell; }
 }
 
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  #image-doge { display: none; }
+  .borderz {   left:0%; right:0%; width:90%;}
+}
+
+@media screen and (min-width: 40em) and (max-width: 2000px) {
+  #image-doge { display: block; }
+  .borderz {   left:10%; right:10%; width:70%;}
+}
+
 html {
   font-family: sans-serif;
   background-color: #F3F3F3;
   min-height:100%;/* make sure it is at least as tall as the viewport */
-  position:relative
 }
 
 body {
   padding-top:8px;
   padding-right: 20px;
   padding-left: 20px;
-  padding-bottom: 20px;
-  width: 800px;
+  padding-bottom: 80px;
   background-color: white;
   margin: auto;
-  height:100%;
+  height: 100%;
+  position: absolute;
 }
 
 a {
@@ -93,4 +88,12 @@ header span
 
 .button-create {
   background-color: blue;
+}
+
+.filter {
+  margin-bottom: 40px;
+}
+
+.price {
+  float: right;
 }

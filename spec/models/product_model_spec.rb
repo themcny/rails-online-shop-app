@@ -42,35 +42,46 @@ RSpec.describe Product, :type => :model do
   end
 
   context "A product's location" do
-    product = Product.new(
-        title: "Hello",
-        body: "World is a great place to live in even if it's fucked up sometimes",
-        category: "Web development leitmotiv",
-        price: 999,
-        quantity: 1
-        )
-
+    let (:params) {{title: "Hello",
+                    body: "World is a great place to live in even if it's fucked up sometimes",
+                    category: "Web development leitmotiv",
+                    price: 999,
+                    quantity: 1,}}
     it "can be In-Stock" do
+      product = Product.new(params)
+
       product.location = "In-Stock"
       expect(product.save)
     end
 
     it "can be In-Transit" do
+      product = Product.new(params)
+
       product.location = "In-Transit"
       expect(product.save)
     end
 
     it "can be Out-of-Stock" do
+      product = Product.new(params)
       product.location = "Out-of-Stock"
       expect(product.save)
     end
 
     it "can be Everywhere" do
+      product = Product.new(params)
       product.location = "Everywhere"
       expect(product.save)
     end
 
+    it 'can be Expired' do
+      product = Product.new(params)
+      product.location = "Expired"
+      expect(product.save)
+    end
+
     it "cannot be anything else" do
+      product = Product.new(params)
+
       product.location = "hello"
       product.save
       expect(product.errors.full_messages).to eq(["Location : \'#{product.location}\' is not included in the list, try dashes instead of spaces!"])
@@ -116,14 +127,14 @@ RSpec.describe Product, :type => :model do
 
     it "title is too short" do
       failure = Product.create(
-        title: "Hell",
+        title: "He",
         body: "World is a great place to live in even if it's fucked up sometimes",
         location: "In-Stock",
         category: "Web development leitmotiv",
         price: 999,
         quantity: 1
         )
-      expect(failure.errors.full_messages).to eq(["Title is too short (minimum is 5 characters)"])
+      expect(failure.errors.full_messages).to eq(["Title is too short (minimum is 3 characters)"])
     end
 
      it "title is too long" do

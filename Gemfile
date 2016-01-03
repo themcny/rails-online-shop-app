@@ -11,6 +11,13 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'bcrypt'
+gem 'simplecov', :require => false, :group => :test
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'bootstrap', '~>4.0.0.alpha3'
+
+gem 'carrierwave'
+gem 'acts_as_shopping_cart', '~> 0.2.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

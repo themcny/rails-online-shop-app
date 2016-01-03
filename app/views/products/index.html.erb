@@ -1,41 +1,62 @@
 <header>
   <h1>Products</h1>
     <span>
-    <%= button_to "Add a new product", new_product_path, :method => :get, :class => 'button button-create' %>
+    <% if current_user && current_user.admin %>
+      <%= button_to "Add a new product", new_product_path, :method => :get, :class => 'button button-create' %>
+    <% end %>
     </span>
 </header>
 <hr>
 
+<div class="filter price">
+  <p>Filter by Price:</p>
+  <a href="/products?cheap_price=2000">Under $20</a> |
+  <a href="/products?cheap_price=1000">Under $10</a> |
+  <a href="/products?cheap_price=500">Under $5</a>
+</div>
+<div class="filter status">
+  <p>Filter by Status:</p>
+  <a href="/products?location=In-Stock">In-Stock</a> |
+  <a href="/products?location=Expired">Expired</a> |
+  <a href="/products?location=Out-of-Stock">Out-of-Stock</a>
+</div>
 
-
+<% @products = sortable(@products, :expiration_date) %>
 <% @products.each do |product| %>
- <div class="row">
+  <!-- <div class= "row"> -->
+    <div class="col-xs-12 col-md-4">
+      <div class="title">
+        <h3><%= link_to product.title, product_path(product) %></h3>
+      </div>
+    <% if current_user && current_user.admin %>
+      <div class= "product_img form-inline pull-xs-right">
+        <%= link_to image_tag(product.product_img, :width => 150, :height => 150), "/products/#{product.id}"%>
+      </div>
+    <% else %>
+      <div class= "img-responsive">
+        <%= link_to image_tag(product.product_img, :width => 300), "/products/#{product.id}"%>
+      </div>
+    <% end %>
 
-            <div class="col" style="width:75%">
+      <div class="location">
+        <p>Status: <%= product.location %></p>
+      </div>
 
-  <div class="title">
-    <h3><%= link_to product.title, product_path(product) %></h3>
-  </div>
+      <div class="category">
+        <p>Category: <%= product.category %></p>
+      </div>
 
-  <div class="location">
-    <p>Location: <%= product.location %></p>
-  </div>
+      <div class="product_price">
+        <p>Price: $<%= (product.price/100.00) %></p>
+      </div>
 
-  <div class="category">
-    <p>Category: <%= product.category %></p>
-  </div>
+      <div class="quantity">
+        <p>Quantity: <%= product.quantity %></p>
+      </div>
+      <div class="expiration_date">
+        <p>Expires On: <%= change_timezone(product.expiration_date) %></p>
+      </div>
 
-  <div class="price">
-    <p>Price: $<%= (product.price/100.00) %></p>
-  </div>
-
-  <div class="quantity">
-    <p>Quantity: <%= product.quantity %></quantity>
-  </div>
-
-            </div>
-    <div class="col" style="width:25%;position:absolute; padding:20px">
-              <img height="155px" style="border-radius:50%" src="http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/dogesmall.jpg" />
-            </div>
-        </div>    <hr>
-        <% end %>
+    </div>
+  <!-- </div> -->
+<% end %>

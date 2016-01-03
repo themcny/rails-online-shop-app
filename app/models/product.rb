@@ -1,4 +1,10 @@
 class Product < ActiveRecord::Base
+  mount_uploader :product_img, ProductImgUploader
+
+  scope :location, -> (location) { where location: location }
+  scope :expiration_date, -> (expiration_date) { where expiration_date: expiration_date }
+  scope :cheap_price, -> (price) { where 'price < ?', price }
+
   validates :title, :body, :location, :category, presence: true
   validates :price, :quantity,  presence: true
   # \A[a-zA-Z]+\z
@@ -10,9 +16,10 @@ class Product < ActiveRecord::Base
   validates :price, :quantity, numericality: { only_integer: true }
 
   validates :body, length: { in: 20..1000 }
-  validates :title, length: { in: 5..15 }
+  validates :title, length: { in: 3..15 }
   validates :category, length: { in: 5..30 }
 
-  validates :location, inclusion: { :in => %w( In-Stock   Out-of-Stock   In-Transit   Everywhere) ,
+  validates :location, inclusion: { :in => %w( In-Stock   Out-of-Stock   In-Transit   Everywhere   Expired ) ,
                                    message: ": \'%{value}\' is not included in the list, try dashes instead of spaces!" }
+
 end
