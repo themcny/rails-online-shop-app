@@ -8,15 +8,14 @@
 </header>
 <hr>
 
-<div class="filter">
+<div class="filter price">
   <p>Filter by Price:</p>
   <a href="/products?cheap_price=2000">Under $20</a> |
   <a href="/products?cheap_price=1000">Under $10</a> |
   <a href="/products?cheap_price=500">Under $5</a>
 </div>
-<br>
-<div class="filter">
-  <p>Filter by Expiration Date:</p>
+<div class="filter status">
+  <p>Filter by Status:</p>
   <a href="/products?location=In-Stock">In-Stock</a> |
   <a href="/products?location=Expired">Expired</a> |
   <a href="/products?location=Out-of-Stock">Out-of-Stock</a>
@@ -47,7 +46,7 @@
         <p>Category: <%= product.category %></p>
       </div>
 
-      <div class="price">
+      <div class="product_price">
         <p>Price: $<%= (product.price/100.00) %></p>
       </div>
 
