@@ -2,3 +2,6 @@
 <p>Email: <%= @user.email %></p>
 <p>Time Zone: <%= @user.timezone %></p>
 <img src=<%= @user.avatar %> width=150vw height=150vw>
+<% if current_user && current_user.id == params[:id].to_i %>
+    <%= button_to "Edit", edit_user_path, :method => :get, :class => 'button button-edit'  %>
+  <% end %>
