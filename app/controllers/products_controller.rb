@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.where(nil)
     @products.each do |product|
       if product.quantity <= 0
         product.update_attributes(location: "Out-Of-Stock")
@@ -9,6 +9,9 @@ class ProductsController < ApplicationController
         product.update_attributes(location: "Expired")
       end
     end
+    @products = @products.location(params[:location]) if params[:location].present?
+    @products = @products.expiration_date(params[:expiration_date]) if params[:expiration_date].present?
+    @products = @products.cheap_price(params[:cheap_price].to_i) if params[:cheap_price].present?
   end
 
   def new

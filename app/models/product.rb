@@ -1,6 +1,10 @@
 class Product < ActiveRecord::Base
   mount_uploader :product_img, ProductImgUploader
 
+  scope :location, -> (location) { where location: location }
+  scope :expiration_date, -> (expiration_date) { where expiration_date: expiration_date }
+  scope :cheap_price, -> (price) { where 'price < ?', price }
+
   validates :title, :body, :location, :category, presence: true
   validates :price, :quantity,  presence: true
   # \A[a-zA-Z]+\z

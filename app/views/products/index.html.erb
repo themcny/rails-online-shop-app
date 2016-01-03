@@ -8,15 +8,24 @@
 </header>
 <hr>
 
+<div class="filter">
+  <p>Filter by Price:</p>
+  <a href="/products?cheap_price=2000">Under $20</a> |
+  <a href="/products?cheap_price=1000">Under $10</a> |
+  <a href="/products?cheap_price=500">Under $5</a>
+</div>
+<br>
+<div class="filter">
+  <p>Filter by Expiration Date:</p>
+  <a href="/products?location=In-Stock">In-Stock</a> |
+  <a href="/products?location=Expired">Expired</a> |
+  <a href="/products?location=Out-of-Stock">Out-of-Stock</a>
+</div>
 
 <% @products = sortable(@products, :expiration_date) %>
 <% @products.each do |product| %>
   <!-- <div class= "row"> -->
-  <% if current_user && current_user.admin %>
     <div class="col-xs-12 col-md-4">
-  <% else %>
-    <div class="col-md12">
-  <% end %>
       <div class="title">
         <h3><%= link_to product.title, product_path(product) %></h3>
       </div>
@@ -26,12 +35,12 @@
       </div>
     <% else %>
       <div class= "img-responsive">
-        <%= link_to image_tag(product.product_img, :width => 500), "/products/#{product.id}"%>
+        <%= link_to image_tag(product.product_img, :width => 300), "/products/#{product.id}"%>
       </div>
     <% end %>
 
       <div class="location">
-        <p>Location: <%= product.location %></p>
+        <p>Status: <%= product.location %></p>
       </div>
 
       <div class="category">
