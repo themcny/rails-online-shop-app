@@ -4,7 +4,9 @@
 
 The latest changes are on the branch named 'themcny'.
 
-This project was worked on by [Nicole](http://github.com/themcny) and [Isaac](https://github.com/SynnisterDomini) with [Paul](http://github.com/gastongouron).
+The post due-date changes are on the master branch (and the branch named 'bells-and-whistles').
+
+This project was worked on by [Nicole](http://github.com/themcny) and [Isaac](https://github.com/SynnisterDomini) (with [Paul](http://github.com/gastongouron)).
 
 ### Requirements
 - There is no starter repo, you are responsible for creating a git repo, following proper git workflow, and pushing code to github.
