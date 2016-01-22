@@ -2,10 +2,6 @@
 
 [Last Version Deployed to Heroku](http://rails-online-shop-paul-nicole.herokuapp.com/products)
 
-The latest changes are on the branch named 'themcny'.
-
-The post due-date changes are on the master branch (and the branch named 'bells-and-whistles').
-
 This project was worked on by [Nicole](http://github.com/themcny) and [Isaac](https://github.com/SynnisterDomini) (with [Paul](http://github.com/gastongouron)).
 
 ### User Stories:
